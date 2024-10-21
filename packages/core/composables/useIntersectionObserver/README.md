@@ -40,7 +40,11 @@ Both calls of `useIntersectionObserver` creates only one `IntersectionObserver` 
 ## API
 
 ```ts
-function useIntersectionObserver(target: MaybeRefOrGetter<MaybeElement | MaybeElement[]>, callback: (entry: IntersectionObserverEntry) => void, options?: IntersectionObserverInit): () => void;
+function useIntersectionObserver(
+	target: MaybeRefOrGetter<MaybeElement | MaybeElement[]>, 
+	callback: (entry: IntersectionObserverEntry) => void, 
+	options?: IntersectionObserverInit
+): () => void;
 ```
 
 ### Parameters

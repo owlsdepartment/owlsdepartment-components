@@ -3,37 +3,46 @@
 ## Registration
 
 ```ts
+import { createApp } from 'ovee.js';
 // Import component from library
 import { YourComponent } from '@ovee.js/toolkit';
 
-// add to app components
-const app = new App({
-    components: [
-        // ... other components ...
-        YourComponent,
-        // ... other components ...
-    ]
-})
+createApp()
+    .compontent('your-component', YourComponent)
+    .run(document.body);
 ```
 
 ## Registration with custom options
 
 ```ts
+import { createApp } from 'ovee.js';
 // Import component from library
 import { YourComponent } from '@ovee.js/toolkit';
 
-// add to app components
-const app = new App({
-    components: [
-        // ... other components ...
-        [YourComponent, { customField: 'custom' }],
-        // ... other components ...
-    ]
-})
-
-// alternatively, register it with `registerComponent` method, to get full typing
-app.registerComponent(YourComponent, { customField: 'custom' });
+createApp()
+    .compontent('your-component', YourComponent, {
+        customField: 'custom'
+    })
+    .run(document.body);
 ```
+
+## Registration multiple components
+
+```ts
+import { createApp } from 'ovee.js';
+// Import component from library
+import { YourComponent, MyComponent } from '@ovee.js/toolkit';
+
+createApp()
+    .compontents({
+        'your-component': [YourComponent, {
+            customField: 'custom'
+        }],
+        'my-component': [MyComponent]
+    })
+    .run(document.body);
+```
+
 
 ## Styling
 
@@ -48,36 +57,44 @@ Some components have styles, which you can import in `SCSS`:
 ## Registration
 
 ```ts
+import { createApp } from 'ovee.js';
 // Import module from library
 import { YourModule } from '@ovee.js/toolkit';
 
-// add to app modules
-const app = new App({
-    modules: [
-        // ... other modules ...
-        YourModule,
-        // ... other modules ...
-    ]
-})
+createApp()
+    .use('your-module', YourModule)
+    .run(document.body);
 ```
 
 ## Registration with custom options
 
 ```ts
+import { createApp } from 'ovee.js';
 // Import module from library
 import { YourModule } from '@ovee.js/toolkit';
 
-// add to app modules
-const app = new App({
-    modules: [
-        // ... other modules ...
-        [YourModule, { customField: 'custom' }],
-        // ... other modules ...
-    ]
-})
+createApp()
+    .use('your-module', YourModule, {
+        customField: 'custom'
+    })
+    .run(document.body);
+```
 
-// alternatively, use it with `use` method, to get full typing
-app.use(YourModule, { customField: 'custom' });
+## Registration multiple modules
+
+```ts
+import { createApp } from 'ovee.js';
+// Import module from library
+import { YourModule, MyModule } from '@ovee.js/toolkit';
+
+createApp()
+    .useMany({
+        'your-module': [YourModule, {
+            customField: 'custom'
+        }],
+        MyModule: [MyModule]
+    })
+    .run(document.body);
 ```
 
 ## Styling
@@ -87,21 +104,3 @@ Some modules have styles, which you can import in `SCSS`:
 ```scss
 @import '@ovee.js/toolkit/styles/your-module';
 ```
-
-# `updateConfig` helper
-
-Some functions or classes (f.ex.: tools and mixins) can have a field `config`. If so, their default config can be partially or fully overwritten with `updateConfig` helper.
-
-Example:
-
-```ts
-import { MyMixin } from '@ovee.js/toolkit';
-
-updateConfig(MyMixin, { customField: 'custom' })
-```
-
-If tool or mixin that are configurable this way, will have it specified in `README`.
-
-# Other
-
-If tool doesn't use `updateConfig` helper (which should be specified in `README`), it should not require any special configuration.
