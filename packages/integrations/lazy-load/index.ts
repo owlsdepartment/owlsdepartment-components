@@ -1,2 +1,2 @@
-export * from './composables';
+export * from './composable';
 export * from './LazyLoad';

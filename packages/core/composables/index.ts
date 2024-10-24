@@ -1,2 +1,2 @@
 export * from './useIntersectionObserver';
-export * from './useInViewport';
+export * from './useMediaQuery';

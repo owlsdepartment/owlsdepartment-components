@@ -1,3 +1,4 @@
+import { Loader } from '@googlemaps/js-api-loader';
 import {
 	computed,
 	defineComponent,
@@ -9,8 +10,6 @@ import {
 	useDataAttr,
 } from 'ovee.js';
 
-import { useMapLoader } from './composables';
-
 export interface GoogleMapOptions extends google.maps.MapOptions {
 	gmapsKey?: string;
 	onMapInitialized?: (
@@ -19,9 +18,23 @@ export interface GoogleMapOptions extends google.maps.MapOptions {
 	) => void;
 }
 
+let loader: Loader | undefined;
 const logger = new Logger('GoogleMap');
 const mapsLibrary = shallowRef<google.maps.MapsLibrary>();
 const markerLibrary = shallowRef<google.maps.MarkerLibrary>();
+
+export function useMapLoader(key: string) {
+	if (!loader) {
+		loader = new Loader({
+			apiKey: key,
+			version: 'weekly',
+		});
+	}
+
+	return {
+		loader,
+	};
+}
 
 export const GoogleMap = defineComponent<HTMLElement, GoogleMapOptions>(
 	async (element, { options }) => {

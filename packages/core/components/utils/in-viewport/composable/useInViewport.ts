@@ -1,11 +1,16 @@
 import { useIntersectionObserver } from '@ovee.js/toolkit';
 import { isNumber } from 'lodash';
-import { computed, onUnmounted, ref, useComponentContext, useDataAttr } from 'ovee.js';
+import { computed, onUnmounted, Ref, ref, useComponentContext, useDataAttr } from 'ovee.js';
 
 export type UseInViewportOptions = IntersectionObserverInit & {
 	once?: boolean;
 	shouldRemoveClass?: boolean;
 };
+
+export interface UseInViewportReturn {
+	isIntersecting: Ref<boolean>;
+	stop: () => void;
+}
 
 export function useInViewport(
 	callback: (entry: IntersectionObserverEntry) => void,

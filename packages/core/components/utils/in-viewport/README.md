@@ -1,5 +1,7 @@
 # InViewport
 
+The `InViewport` component is a wrapper around the [`useInViewport`](./composable/README.md) composable.
+
 ## Registration and configuration
 
 See [Components instalation](/docs/components_instalation.md)

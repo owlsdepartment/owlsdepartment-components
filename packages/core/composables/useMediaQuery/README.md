@@ -5,7 +5,8 @@ Reactive [Media Query](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_medi
 ## Usage
 
 ```ts
-import { useMediaQuery, watch } from '@ovee.js/toolkit'
+import { watch } from 'ovee.js';
+import { useMediaQuery } from '@ovee.js/toolkit'
 
 const isMobile = useMediaQuery('(min-width: 520px)');
 	
