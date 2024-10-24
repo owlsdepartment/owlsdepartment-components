@@ -1,4 +1,4 @@
-import { useInViewport } from '@ovee.js/toolkit/composables';
+import { useInViewport } from '@ovee.js/toolkit';
 import { useLazyLoad } from '@ovee.js/toolkit-integrations/lazy-load';
 import { defineComponent, ref } from 'ovee.js';
 import { ILazyLoadOptions } from 'vanilla-lazyload';
