@@ -1,15 +1,10 @@
 # InViewport
 
+The `InViewport` component is a wrapper around the [`useInViewport`](./composable/README.md) composable.
+
 ## Registration and configuration
 
-```ts
-import { InViewport } from '@ovee.js/toolkit';
-
-export default [
-    // ... other components ...
-    InViewport
-];
-```
+See [Components instalation](/docs/components_instalation.md)
 
 ## Usage example
 
